@@ -5,6 +5,7 @@
 Default Login & Password:
 
 Login: testUser@gmail.com
+
 Pass: Testpass123!
 
 ## Task description:
@@ -16,11 +17,11 @@ It is not allowed to use online resources that offer ready-made solutions to cre
 All points are optional, so you can select what to do or skip.
 
 It is necessary to create a simple CRUD app that writes in local storage:
-	view with a form that has validation, etc.;
-	view with a list of items that has edit, delete;
-	view with the edit form;
-	router - add, edit, list, and login;
-	login page with fake user/pass;
-	protected routes.
+ - view with a form that has validation, etc.;
+ - view with a list of items that has edit, delete;
+ - view with the edit form;
+ - router - add, edit, list, and login;
+ - login page with fake user/pass;
+ - protected routes.
 
 Decide for yourself how you will solve the task. The only condition is the use of listed technologies in solving the task.
