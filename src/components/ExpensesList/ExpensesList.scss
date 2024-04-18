@@ -1,0 +1,43 @@
+.button-container {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+}
+
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  padding: 50px 200px;
+}
+
+.delete {
+  color: #DC4067;
+}
+
+.edit {
+  color: #464F60;
+}
+
+.categories {
+  padding: 5px 20px;
+  border-radius: 60px;
+  color: #5A6376;
+  background-color: #E9EDF5;
+}
+
+.food {
+  color: #14804A;
+  background-color: #E1FCEF;
+}
+
+.transport {
+  color: #4F5AED;
+  background-color: #F0F1FA;
+}
+
+.shopping {
+  color: #D12953;
+  background-color: #FAF0F3;
+}
