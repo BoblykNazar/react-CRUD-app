@@ -8,7 +8,8 @@ import {
   TableContainer,
   TableCell,
   TableBody,
-  Table
+  Table,
+  Tooltip
 } from '@mui/material';
 import {
   Add,
@@ -20,6 +21,7 @@ import cn from 'classnames';
 import './ExpensesList.scss';
 import { Expense } from '../../types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import emptyImg from '../../images/empty-box.svg';
 
 export function ExpensesList() {
   const navigate = useNavigate();
@@ -49,65 +51,82 @@ export function ExpensesList() {
           </Button>
         </div>
 
-        <TableContainer component={Paper} >
-          <Table aria-label="table">
-            <TableHead>
-              <TableRow>
-                <TableCell>#</TableCell>
+        {expenses.length > 0 && (
+          <TableContainer component={Paper} >
+            <Table aria-label="table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>#</TableCell>
 
-                <TableCell align="left">Amount</TableCell>
+                  <TableCell align="left">Amount</TableCell>
 
-                <TableCell align="left">Date</TableCell>
+                  <TableCell align="left">Date</TableCell>
 
-                <TableCell align="left">Category</TableCell>
+                  <TableCell align="left">Category</TableCell>
 
-                <TableCell align="left">Comment</TableCell>
+                  <TableCell align="left">Comment</TableCell>
 
-                <TableCell align="center"></TableCell>
-              </TableRow>
-            </TableHead>
+                  <TableCell align="center"></TableCell>
+                </TableRow>
+              </TableHead>
 
-            <TableBody>
-              {expenses.map((expense) => {
-                const { position, amount, date, category, comment } = expense;
+              <TableBody>
+                {expenses.map((expense) => {
+                  const { position, amount, date, category, comment } = expense;
 
-                return (
-                  <TableRow
-                    key={position}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">{position}</TableCell>
+                  return (
+                    <TableRow
+                      key={position}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">{position}</TableCell>
 
-                    <TableCell align="left">{amount}</TableCell>
+                      <TableCell align="left">{amount}</TableCell>
 
-                    <TableCell align="left">{date}</TableCell>
+                      <TableCell align="left">{date}</TableCell>
 
-                    <TableCell align="left">
-                      <span className={cn(
-                        'categories',
-                        `${category.toLowerCase()}`
-                      )}>
-                        {category}
-                      </span>
-                    </TableCell>
+                      <TableCell align="left">
+                        <span className={cn(
+                          'categories',
+                          `${category.toLowerCase()}`
+                        )}>
+                          {category}
+                        </span>
+                      </TableCell>
 
-                    <TableCell align="left">{comment}</TableCell>
+                      <TableCell align="left">{comment}</TableCell>
 
-                    <TableCell align="right">
-                      <IconButton aria-label="edit" onClick={() => handleEdit(expense.position)}>
-                        <Edit className='edit' />
-                      </IconButton>
+                      <TableCell align="right">
+                        <Tooltip title="Edit">
+                          <IconButton aria-label="edit" onClick={() => handleEdit(expense.position)}>
+                            <Edit className='edit' />
+                          </IconButton>
+                        </Tooltip>
 
-                      <IconButton aria-label="delete" onClick={() => handleDelete(expense.position)}>
-                        <Delete className='delete' />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
+                        <Tooltip title="Delete">
+                          <IconButton aria-label="delete" onClick={() => handleDelete(expense.position)}>
+                            <Delete className='delete' />
+                          </IconButton>
+                        </Tooltip>
+                      </TableCell>
+                    </TableRow>
+                  )
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+
+        {expenses.length === 0 && (
+          <div >
+            <img
+              className='emptyImg'
+              src={emptyImg}
+              alt="emptyImg"
+            />
+            <h2>Your expense list is empty.</h2>
+          </div>
+        )}
       </div>
     </>
   );

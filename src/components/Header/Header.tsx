@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { Logout } from '@mui/icons-material';
-import { 
-  IconButton, 
-  AppBar, 
-  Box, 
-  Toolbar, 
-  Typography 
+import {
+  IconButton,
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  Tooltip
 } from '@mui/material';
 
 import './Header.scss';
@@ -26,9 +27,11 @@ export function Header() {
             Expenses App
           </Typography>
 
-          <IconButton aria-label="LogoutOutlined" onClick={handleSignOut}>
-            <Logout className='logout'/>
-          </IconButton>
+          <Tooltip title="Sign-Out">
+            <IconButton aria-label="LogoutOutlined" onClick={handleSignOut}>
+              <Logout className='logout' />
+            </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
     </Box>
