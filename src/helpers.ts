@@ -12,5 +12,3 @@ export const setupDefaultCredentials = () => {
     localStorage.setItem('credentials', JSON.stringify({ defaultEmail, defaultPassword }));
   }
 };
-
-export const isAuthenticated = localStorage.getItem('currentUser');

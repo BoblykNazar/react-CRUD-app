@@ -13,7 +13,7 @@ import {
   Link
 } from '@mui/material';
 
-import { validateEmail } from '../../helpers';
+import { setupDefaultCredentials, validateEmail } from '../../helpers';
 
 export function Login() {
   const navigate = useNavigate();
@@ -24,6 +24,10 @@ export function Login() {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [formError, setFormError] = useState('');
+
+  useEffect(() => {
+    setupDefaultCredentials();
+  }, []);
 
   useEffect(() => {
     if (touched.email && !validateEmail(email)) {

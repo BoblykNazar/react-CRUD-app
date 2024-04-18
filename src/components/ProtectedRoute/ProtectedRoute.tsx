@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { isAuthenticated } from '../../helpers';
 
 export const ProtectedRoute = () => {
+  const isAuthenticated = localStorage.getItem('currentUser');
+
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 };
