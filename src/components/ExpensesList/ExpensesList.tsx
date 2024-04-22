@@ -23,7 +23,7 @@ import { Expense } from '../../types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import emptyImg from '../../images/empty-box.svg';
 
-export function ExpensesList() {
+export const ExpensesList = () => {
   const navigate = useNavigate();
 
   const [expenses, setExpenses] = useLocalStorage<Expense[]>('expenses', []);

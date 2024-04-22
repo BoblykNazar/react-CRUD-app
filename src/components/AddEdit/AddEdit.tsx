@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { 
   Box, 
   Button, 
-  InputAdornment, 
+  InputAdornment,
   FormControl, 
   InputLabel, 
   OutlinedInput, 
@@ -13,13 +13,13 @@ import {
   Select,
   SelectChangeEvent,
   MenuItem
-} from "@mui/material";
-import { AccountBalanceWalletOutlined } from "@mui/icons-material";
+} from '@mui/material';
+import { AccountBalanceWalletOutlined } from '@mui/icons-material';
 
-import { Expense } from "../../types";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { Expense } from '../../types';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
-export function AddEdit() {
+export const AddEdit = () => {
   const { id } = useParams<{ id: string | undefined }>();
   const navigate = useNavigate();
 
@@ -48,8 +48,8 @@ export function AddEdit() {
 
   useEffect(() => {
     setIsValid(amount > 0 && category !== '');
-    setAmountError(touched.amount && amount <= 0 ? "Please enter a valid amount" : "");
-    setCategoryError(touched.category && !category ? "Please select a category" : "");
+    setAmountError(touched.amount && amount <= 0 ? 'Please enter a valid amount' : '');
+    setCategoryError(touched.category && !category ? 'Please select a category' : '');
 
   }, [amount, category, touched]);
 
@@ -96,7 +96,7 @@ export function AddEdit() {
 
   return (
     <Box
-      component="form"
+      component='form'
       onSubmit={handleSubmit}
       noValidate
       sx={{
@@ -111,17 +111,17 @@ export function AddEdit() {
         <AccountBalanceWalletOutlined />
       </Avatar>
 
-      <Typography component="h1" variant="h5">
+      <Typography component='h1' variant='h5'>
         Add new Expense
       </Typography>
 
       <FormControl sx={{ width: '260px' }} error={!!amountError}>
-        <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+        <InputLabel htmlFor='outlined-adornment-amount'>Amount</InputLabel>
 
         <OutlinedInput
-          id="outlined-adornment-amount"
-          startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          label="Amount"
+          id='outlined-adornment-amount'
+          startAdornment={<InputAdornment position='start'>$</InputAdornment>}
+          label='Amount'
           value={amount}
           autoFocus
           onChange={handleAmountChange}
@@ -134,13 +134,13 @@ export function AddEdit() {
       </FormControl>
 
       <FormControl sx={{ width: '260px' }} error={!!categoryError}>
-        <InputLabel id="demo-simple-select-label">Categories</InputLabel>
+        <InputLabel id='demo-simple-select-label'>Categories</InputLabel>
 
         <Select
-          labelId="select-label"
-          id="select"
+          labelId='select-label'
+          id='select'
           value={category}
-          label="Categories"
+          label='Categories'
           onChange={handleCategoryChange}
           onBlur={() => setTouched(prev => ({ ...prev, category: true }))}
           required
@@ -156,12 +156,12 @@ export function AddEdit() {
       </FormControl>
 
       <FormControl sx={{ width: '260px' }}>
-        <InputLabel htmlFor="outlined-textarea">Comments</InputLabel>
+        <InputLabel htmlFor='outlined-textarea'>Comments</InputLabel>
 
         <OutlinedInput
-          id="outlined-textarea"
-          label="Comments"
-          placeholder="Comments"
+          id='outlined-textarea'
+          label='Comments'
+          placeholder='Comments'
           multiline
           value={comments}
           onChange={handleCommentsChange}
@@ -178,8 +178,8 @@ export function AddEdit() {
       >
         <Button 
           fullWidth 
-          type="submit" 
-          variant="contained" 
+          type='submit' 
+          variant='contained' 
           disabled={!isValid}
         >
           {id ? 'Save' : 'Add'}
@@ -187,8 +187,8 @@ export function AddEdit() {
 
         <Button 
           fullWidth 
-          type="button" 
-          variant="outlined" 
+          type='button' 
+          variant='outlined' 
           onClick={handleCancel}
         >
           Cancel

@@ -15,7 +15,7 @@ import {
 
 import { setupDefaultCredentials, validateEmail } from '../../helpers';
 
-export function Login() {
+export const Login = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');

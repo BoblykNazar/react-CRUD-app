@@ -1,9 +1,9 @@
 import { Outlet, useLocation } from 'react-router-dom';
 
 import './App.scss';
-import { Header } from './components/Header/Header';
+import { Header } from './components/Header';
 
-export function App() {
+export const App = () => {
   const location = useLocation();
 
   return (

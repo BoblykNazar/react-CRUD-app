@@ -11,7 +11,7 @@ import {
 
 import './Header.scss';
 
-export function Header() {
+export const Header = () => {
   const navigate = useNavigate();
 
   const handleSignOut = () => {
